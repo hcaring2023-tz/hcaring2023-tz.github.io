@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caring Hands Charitable Foundation & Secondary School</title>
+    <style>
+        :root {
+            --primary: #0f3d7a;
+            --secondary: #d4af37;
+            --dark: #222222;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --accent: #2e7d32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        /* Section Global */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Hero Landing */
+        .hero {
+            background: linear-gradient(rgba(15, 61, 122, 0.85), rgba(15, 61, 122, 0.85)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 2rem;
+            max-width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+        }
+
+        .cta-btn {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Grid Framework layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .card-accent {
+            border-top-color: var(--accent);
+            background-color: #f4faf4;
+        }
+
+        .card-accent h3 {
+            color: var(--accent);
+        }
+
+        /* Lists formatting */
+        .subject-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .subject-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .subject-list li::before {
+            content: "✓";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .card-accent .subject-list li::before {
+            content: "★";
+            color: var(--accent);
+        }
+
+        /* Enrollment Portal Form */
+        .form-container {
+            background: var(--white);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer span {
+            color: var(--secondary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Unified Menu Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">CHCF <span>Tanzania</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About & Vocational</a></li>
+                <li><a href="#academic">Secondary Education</a></li>
+                <li><a href="#enrollment">Admissions</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <header id="home" class="hero">
+        <h1>Caring Hands Secondary School</h1>
+        <p>"Education is Morality"</p>
+        <a href="#enrollment" class="cta-btn">Enroll Student Online</a>
+    </header>
+
+    <!-- About & Vocational Modules Section -->
+    <section id="about">
+        <h2 class="section-title">About the Foundation</h2>
+        <div style="max-width: 800px; margin: 0 auto 4rem auto; text-align: center;">
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Operating out of Chekeni - Mwasonga in the Kigamboni municipality of Dar es Salaam, the Caring Hands Charitable Foundation (CHCF) blends classic secondary education with essential vocational survival skills to foster economic resilience and moral uprightness.
+            </p>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary); font-size: 1.6rem;">Practical Vocational Modules</h3>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Carpentry & Woodworking</h3>
+                <p>Equipping students with modern furniture design, timber joined structural setups, and specialized workshop security protocols.</p>
+            </div>
+            <div class="card">
+                <h3>Tailoring & Sewing Arts</h3>
+                <p>Instruction in industrial textile cutting, apparel layout creation, dressmaking, and commercial tailoring enterprise administration.</p>
+            </div>
+            <div class="card">
+                <h3>Window Manufacturing</h3>
+                <p>Specialized physical skills covering modern framing construction, aluminum installation methods, glass fitting, and architectural designs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secondary Education Curriculum Section -->
+    <section id="academic" style="background-color: #f1f3f6; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Secondary Education Framework</h2>
+            <p style="text-align: center; max-width: 700px; margin: -1.5rem auto 3rem auto;">
+                Registered and fully aligned with the National Examinations Council of Tanzania (NECTA) curriculum framework for Form I to Form IV certification.
+            </p>
+
+            <div class="grid-3">
+                <!-- Highlighted Cultural & Values Block -->
+                <div class="card card-accent">
+                    <h3>National & Spiritual Values</h3>
+                    <p>Core curriculum framework emphasizing ethics, civic pride, and foundational religious values.</p>
+                    <ul class="subject-list">
+                        <li><strong>Elimu ya Dini ya Kiislamu</strong> (Islamic Knowledge)</li>
+                        <li><strong>Historia na Maadili ya Tanzania</strong> (Tanzanian History & Ethics)</li>
+                    </ul>
+                </div>
+
+                <!-- Traditional Core NECTA subjects -->
+                <div class="card">
+                    <h3>Core Sciences & Math</h3>
+                    <p>Building systematic critical problem solving paths and practical engineering foundations.</p>
+                    <ul class="subject-list">
+                        <li>Mathematics</li>
+                        <li>Physics</li>
+                        <li>Chemistry</li>
+                        <li>Biology</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Humanities & Business</h3>
+                    <p>Developing languages fluency alongside standard financial bookkeeping competencies.</p>
+                    <ul class="subject-list">
+                        <li>English & Kiswahili</li>
+                        <li>History & Geography</li>
+                        <li>Civics</li>
+                        <li>Commerce & Bookkeeping</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Admission Intake Portal Form -->
+    <section id="enrollment">
+        <h2 class="section-title">Admissions Portal</h2>
+        <div class="form-container">
+            <form onsubmit="alert('Application details captured! Thank you for choosing Caring Hands Secondary School.'); return false;">
+                <div class="form-group">
+                    <label for="studentName">Student Full Name:</label>
+                    <input type="text" id="studentName" class="form-control" placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="formLevel">Target Form Intake Level:</label>
+                    <select id="formLevel" class="form-control" required>
+                        <option value="">-- Choose level --</option>
+                        <option value="form1">Form I</option>
+                        <option value="form2">Form II</option>
+                        <option value="form3">Form III</option>
+                        <option value="form4">Form IV</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="vocationalInterest">Primary Elective Vocational Track:</label>
+                    <select id="vocationalInterest" class="form-control" required>
+                        <option value="">-- Choose track --</option>
+                        <option value="carpentry">Carpentry & Woodworking</option>
+                        <option value="tailoring">Tailoring & Sewing Arts</option>
+                        <option value="windows">Window Manufacturing</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="parentContact">Parent/Guardian Primary Phone Contact:</label>
+                    <input type="tel" id="parentContact" class="form-control" placeholder="e.g. +255 692 109 458" required>
+                </div>
+
+                <button type="submit" class="cta-btn" style="width: 100%; padding: 1rem; margin-top: 1rem;">Submit Admission Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Core School Footer Template Signature -->
+    <footer>
+        <p>&copy; 2026 <span>Caring Hands Charitable Foundation</span>. All Rights Reserved.</p>
+        <p>Chekeni - Mwasonga, Kigamboni, Dar es Salaam, Tanzania | Contact: +255 692 109 458</p>
+    </footer>
+
+</body>
+</html>
